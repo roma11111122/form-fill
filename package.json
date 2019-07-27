@@ -1,0 +1,6 @@
+{
+  "name": "form-fill",
+  "dependencies": {
+    "puppeteer": "^1.19.0"
+  }
+}
