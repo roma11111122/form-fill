@@ -17,24 +17,22 @@ const siteDetails = {
     const browser = await puppeteer.launch(chromeOptions);
     const page = await browser.newPage();
     await page.goto('https://www.tokopedia.com/contact-us/form/ban-product');
-    //const requestId = await initiateCaptchaRequest('6ad3f7e0ce700731ef8d582b6a82d6c8');
-    await page.type('#full_name', 'test1');
+    const requestId = await initiateCaptchaRequest('6ad3f7e0ce700731ef8d582b6a82d6c8');
+    await page.type('#full_name', 'test');
     await page.type('#company', 'test1');
     await page.type('#title', 'test1');
     await page.type('#brand_name', 'test1');
     await page.type('#brand_number', 'test1');
-    await page.type('#product_link', 'test1');
-    await page.type('#user_email', 'test1');
+    await page.type('#product_link', 'https://www.tokopedia.com/tokobaterai/lcd-full-assembly-original-macbook-pro-retina-13-a1502-2013-2014-2015-silver?src=topads');
+    await page.type('#user_email', 'test@gmail.com');
     await page.type('#user_phone', '0885673320');
-    await page.type('#user_report', 'Pelanggaran Merek / Trademark Infringement');
+    await page.click('#user_report');
+    await page.click('.option');
 
     const fileInput = await page.$('input[type="file"]');
-    await fileInput.uploadFile('./input.pdf');
-    /*await page.evaluate(() => {
-        document.querySelector('input[name=pemilik_haki]').click();
-    });
+    await fileInput.uploadFile('./input.docx');
 
-   /* const response = await pollForRequestResults('6ad3f7e0ce700731ef8d582b6a82d6c8', requestId);
+    const response = await pollForRequestResults('6ad3f7e0ce700731ef8d582b6a82d6c8', requestId);
 
     await page.evaluate(`document.getElementById("g-recaptcha-response").removeAttribute("style")`);
     await page.evaluate(`document.getElementById("g-recaptcha-response").innerHTML="${response}";`);
@@ -42,7 +40,7 @@ const siteDetails = {
     if (response !== '') {
         console.log(1);
         await page.click('#send-message');
-    } */
+    }
 })();
 
 async function initiateCaptchaRequest(apiKey) {
