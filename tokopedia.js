@@ -27,8 +27,9 @@ const siteDetails = {
     await page.type('#user_email', 'test1');
     await page.type('#user_phone', '0885673320');
     await page.type('#user_report', 'Pelanggaran Merek / Trademark Infringement');
-    const fileInput = await page.$('#pickAttachmentFiles');
-    await fileInput.uploadFile('./allegro.png');
+
+    const fileInput = await page.$('input[type="file"]');
+    await fileInput.uploadFile('./input.pdf');
     /*await page.evaluate(() => {
         document.querySelector('input[name=pemilik_haki]').click();
     });
