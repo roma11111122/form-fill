@@ -1,6 +1,9 @@
 {
   "name": "form-fill",
   "dependencies": {
-    "puppeteer": "^1.19.0"
+    "promise-poller": "^1.7.0",
+    "puppeteer": "^1.19.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
   }
 }
