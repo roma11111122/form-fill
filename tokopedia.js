@@ -27,10 +27,10 @@ const siteDetails = {
     await page.type('#user_email', 'test@gmail.com');
     await page.type('#user_phone', '0885673320');
     await page.click('#user_report');
-    await page.click('.option');
+    await page.click('[value="0"]');
 
     const fileInput = await page.$('input[type="file"]');
-    await fileInput.uploadFile('./input.docx');
+    await fileInput.uploadFile('Clean_Code.pdf');
 
     const response = await pollForRequestResults('6ad3f7e0ce700731ef8d582b6a82d6c8', requestId);
 
@@ -38,7 +38,6 @@ const siteDetails = {
     await page.evaluate(`document.getElementById("g-recaptcha-response").innerHTML="${response}";`);
 
     if (response !== '') {
-        console.log(1);
         await page.click('#send-message');
     }
 })();
